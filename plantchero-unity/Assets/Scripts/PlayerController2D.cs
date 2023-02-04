@@ -26,18 +26,22 @@ public class PlayerController2D : MonoBehaviour
     public GameObject carrotFab;
     public GameObject potatoFab;
 
+	public int digForce = 1;
+    public GameObject vegObject;
+    Collider2D triggeringCollider;
+
     // Use this for initialization
     void Start()
     {
         t = transform;
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<CapsuleCollider2D>();
-        //animator = GetComponent<Animator>();
+
         r2d.freezeRotation = true;
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
-
+        vegObject = null;
     }
 
     public void Movement(InputAction.CallbackContext ctx)
@@ -72,7 +76,9 @@ public class PlayerController2D : MonoBehaviour
     
     public void Interact(InputAction.CallbackContext ctx)
     {
-        
+        if(!ctx.started) return;
+
+        digForVeggie();
     }
     
     public void Jump(InputAction.CallbackContext ctx)
@@ -85,14 +91,27 @@ public class PlayerController2D : MonoBehaviour
     
     public void Shoot(InputAction.CallbackContext ctx)
     {
-        if(!ctx.started) return;
+if(!ctx.started) return;
         // var veggie = Instantiate(carrotFab);
         var veggie = Instantiate(potatoFab);
         var direction = facingRight ? Vector2.right : Vector2.left;
         veggie.transform.position = throwTransform.position;
         veggie.transform.rotation = facingRight ? Quaternion.Euler(0,0,90) : Quaternion.Euler(0,0,-90);
         var rg = veggie.GetComponent<Rigidbody2D>();
-        rg.AddForce((direction.normalized + Vector2.up) * 200);
+        rg.AddForce((direction.normalized + Vector2.up) * 200);    }
+
+    private void digForVeggie()
+    {
+        if(triggeringCollider && !vegObject)
+        {
+            Vegetable veg = triggeringCollider.GetComponent<Vegetable>();
+            if (veg)
+            {
+                vegObject = veg.DigIt(digForce);
+
+                if (vegObject) vegObject.transform.SetParent(transform);
+            }
+        }
     }
     
     void FixedUpdate()
@@ -145,5 +164,15 @@ public class PlayerController2D : MonoBehaviour
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(colliderRadius, 0, 0), isGrounded ? Color.green : Color.red);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        triggeringCollider = other;
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        triggeringCollider = null;
     }
 }
