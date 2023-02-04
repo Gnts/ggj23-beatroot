@@ -39,6 +39,9 @@ public class PlayerController2D : MonoBehaviour
     public GameObject carrotFab;
     public GameObject potatoFab;
     public GameObject beetrootFab;
+    public Transform carrotIcon;
+    public Transform potatoIcon;
+    public Transform beetrootIcon;
 
 	public int digForce = 1;
     public GameObject vegObject;
@@ -173,6 +176,9 @@ public class PlayerController2D : MonoBehaviour
         rg.AddForce(direction_vector);
 
         activeVeggie = ThrowableVeggie.NONE;
+        beetrootIcon.gameObject.SetActive(false);
+        carrotIcon.gameObject.SetActive(false);
+        potatoIcon.gameObject.SetActive(false);
     }
     private void digForVeggie()
     {
@@ -193,6 +199,10 @@ public class PlayerController2D : MonoBehaviour
     private void pickVeggie(Vegetable veggie)
     {
         activeVeggie = veggie.type;
+        beetrootIcon.gameObject.SetActive(veggie.type == ThrowableVeggie.BEETROOT);
+        carrotIcon.gameObject.SetActive(veggie.type == ThrowableVeggie.CARROT);
+        potatoIcon.gameObject.SetActive(veggie.type == ThrowableVeggie.POTATO);
+
         GameObject.Destroy(veggie.gameObject);
     }
     
