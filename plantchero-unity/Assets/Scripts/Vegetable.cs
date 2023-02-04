@@ -45,6 +45,7 @@ public class Vegetable : MonoBehaviour
 
     public GameObject DigIt(int amount)
     {
+        transform.localScale = new Vector3(transform.lossyScale.x * 0.9f, transform.lossyScale.y * 1.1f, transform.lossyScale.z * 0.9f);
         currentHealth = currentHealth - amount;
         if (currentHealth < 1)
         {
