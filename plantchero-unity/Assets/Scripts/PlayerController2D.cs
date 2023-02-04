@@ -37,6 +37,7 @@ public class PlayerController2D : MonoBehaviour
     public Transform throwTransform;
     public GameObject carrotFab;
     public GameObject potatoFab;
+    public GameObject beetrootFab;
 
 	public int digForce = 1;
     public GameObject vegObject;
@@ -137,11 +138,15 @@ public class PlayerController2D : MonoBehaviour
                 return;
             case ThrowableVeggie.POTATO:
                 fab = potatoFab;
-                direction_vector = (direction.normalized + Vector2.up) * 150;
+                direction_vector = (direction.normalized + Vector2.up) * 250;
                 break;
             case ThrowableVeggie.CARROT:
                 fab = carrotFab;
-                direction_vector = (direction.normalized) * 200;
+                direction_vector = (direction.normalized) * 400;
+                break;
+            case ThrowableVeggie.BEETROOT:
+                fab = beetrootFab;
+                direction_vector = (direction.normalized + Vector2.up) * 300;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
