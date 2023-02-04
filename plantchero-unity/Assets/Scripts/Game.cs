@@ -14,6 +14,7 @@ public class Game : MonoBehaviour
     public const int MaxTime = 60;
     public float time;
     public TextMeshProUGUI ui_timer;
+    public GameObject timerGo;
     public GameObject game_end;
     
     void Start()
@@ -26,6 +27,10 @@ public class Game : MonoBehaviour
         time = Math.Clamp(time, 0, MaxTime);
         
         ui_timer.text = ((int) time).ToString(CultureInfo.InvariantCulture);
-        if(((int) time) == 0) game_end.SetActive(true);
+        if(((int) time) == 0)
+        {
+            timerGo.SetActive(false);
+            game_end.SetActive(true);
+        }
     }
 }
