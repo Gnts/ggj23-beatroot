@@ -9,6 +9,7 @@ public class Vegetable : MonoBehaviour
     public int currentHealth;
     public ThrowableVeggie type;
     int maxHelath = 3;
+    public int potIndex;
 
     public float healthInterval = 2.0f; 
     float nextTime = 0;
@@ -21,6 +22,7 @@ public class Vegetable : MonoBehaviour
     private void OnDisable()
     {
         count--;
+        IPlantVeggies.occupied.Remove(potIndex);
     }
 
     // Start is called before the first frame update
