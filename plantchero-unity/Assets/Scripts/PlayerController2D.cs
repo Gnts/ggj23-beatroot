@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
@@ -19,6 +20,8 @@ public class PlayerController2D : MonoBehaviour
     CapsuleCollider2D mainCollider;
     Transform t;
     public Animator animator;
+    private Vector2 move_vector;
+    private bool jump;
 
     // Use this for initialization
     void Start()
@@ -34,46 +37,53 @@ public class PlayerController2D : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Movement(InputAction.CallbackContext ctx)
     {
-        // Movement controls
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) )
-        {
-            moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
-        }
-        else
-        {
-            if (isGrounded || r2d.velocity.magnitude < 0.01f)
-            {
-                moveDirection = 0;
-            }
-        }
+        move_vector = ctx.ReadValue<Vector2>();
+        moveDirection = move_vector.x;
+        // if (isGrounded || r2d.velocity.magnitude < 0.01f && moveDirection < 0.05f)
+        // {
+        //     moveDirection = 0;
+        // }
 
-        // Change facing direction
         if (moveDirection != 0)
         {
             if (moveDirection > 0 && !facingRight)
             {
                 facingRight = true;
-                t.localScale = new Vector3(Mathf.Abs(t.localScale.x), t.localScale.y, transform.localScale.z);
+                var localScale = t.localScale;
+                localScale = new Vector3(Mathf.Abs(localScale.x), localScale.y, transform.localScale.z);
+                t.localScale = localScale;
                 animator.SetBool ("facingRight", facingRight);
             }
             if (moveDirection < 0 && facingRight)
             {
                 facingRight = false;
-                t.localScale = new Vector3(-Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
+                var localScale = t.localScale;
+                localScale = new Vector3(-Mathf.Abs(localScale.x), localScale.y, localScale.z);
+                t.localScale = localScale;
                 animator.SetBool ("facingRight", facingRight);
             }
         }
-
-        // Jumping
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+    }
+    
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        
+    }
+    
+    public void Jump(InputAction.CallbackContext ctx)
+    {
+        if (isGrounded)
         {
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
         }
     }
-
+    
+    public void Shoot(InputAction.CallbackContext ctx)
+    {
+    }
+    
     void FixedUpdate()
     {
         Bounds colliderBounds = mainCollider.bounds;
