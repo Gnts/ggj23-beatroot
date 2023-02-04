@@ -48,7 +48,8 @@ public class PlayerController2D : MonoBehaviour
     Collider2D triggeringCollider;
     public ThrowableVeggie activeVeggie;
     public bool infiniteAmmo;
-
+    public float stunTime;
+    public float maxStunTime = 2f;
     public int deathCounter;
     
     // Use this for initialization
@@ -205,6 +206,11 @@ public class PlayerController2D : MonoBehaviour
 
         GameObject.Destroy(veggie.gameObject);
     }
+
+    void Update()
+    {
+        stunTime -= Time.deltaTime;
+    }
     
     void FixedUpdate()
     {
@@ -228,7 +234,7 @@ public class PlayerController2D : MonoBehaviour
         }
 
         // Apply movement velocity
-        r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+        if(stunTime < 0) r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
 
         //Animator updates
         if (Mathf.Abs(r2d.velocity.x) > 0.001f ) animator.SetBool ("isRunning", true);

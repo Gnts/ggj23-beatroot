@@ -21,6 +21,7 @@ public class Game : MonoBehaviour
     {
         time = MaxTime;
     }
+
     void Update()
     {
         time -= Time.deltaTime;
