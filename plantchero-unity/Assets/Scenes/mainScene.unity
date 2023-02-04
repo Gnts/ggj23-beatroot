@@ -778,7 +778,10 @@ MonoBehaviour:
   state: 0
   time: 0
   ui_timer: {fileID: 1159587089}
+  timerGo: {fileID: 824515745}
   game_end: {fileID: 1395148563}
+  buttonPlayAgain: {fileID: 824515747}
+  buttonExit: {fileID: 824515746}
 --- !u!1001 &824515744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -958,6 +961,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 759f50a275fba7842b5810710b0113be, type: 3}
+--- !u!1 &824515745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1331367529035105496, guid: 759f50a275fba7842b5810710b0113be,
+    type: 3}
+  m_PrefabInstance: {fileID: 824515744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &824515746 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1958464960938395366, guid: 759f50a275fba7842b5810710b0113be,
+    type: 3}
+  m_PrefabInstance: {fileID: 824515744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &824515747 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1176455353959468379, guid: 759f50a275fba7842b5810710b0113be,
+    type: 3}
+  m_PrefabInstance: {fileID: 824515744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
