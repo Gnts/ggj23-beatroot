@@ -130,10 +130,6 @@ public class PlayerController2D : MonoBehaviour
         {
             animator.SetBool("isFalling", false);
         }
-        
-
-        Debug.Log(r2d.velocity.y + " : " + t);
-                
 
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
