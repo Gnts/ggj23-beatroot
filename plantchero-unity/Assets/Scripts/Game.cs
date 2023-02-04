@@ -28,6 +28,7 @@ public class Game : MonoBehaviour
         buttonPlayAgain.onClick.AddListener(RestartLevel);
         buttonExit.onClick.AddListener(ExitGame);
     }
+
     void Update()
     {
         time -= Time.deltaTime;
