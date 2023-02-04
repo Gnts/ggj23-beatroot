@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 7055695030752245721}
   - component: {fileID: -2094407388935662530}
   - component: {fileID: 7008422004047091610}
+  - component: {fileID: 987666222493945457}
+  - component: {fileID: -6402183308153723808}
   m_Layer: 0
   m_Name: beetroot
   m_TagString: Untagged
@@ -184,6 +186,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExplosionPrefab: {fileID: 3823543717937924172, guid: b275e47fc7ab0f944b1a85d0ad5ad59a,
     type: 3}
+--- !u!114 &987666222493945457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986768306357618069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89d33d3a30b99241a607cfa7078c634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secsToDestroy: 1
+--- !u!114 &-6402183308153723808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986768306357618069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1240a1d273968374b9551042d8aab67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
 --- !u!1 &8135631642106553293
 GameObject:
   m_ObjectHideFlags: 0
