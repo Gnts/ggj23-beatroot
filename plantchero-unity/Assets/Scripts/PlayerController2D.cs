@@ -62,6 +62,8 @@ public class PlayerController2D : MonoBehaviour
         vegObject = null;
         initFacing = transform.rotation;
 
+        var input = GetComponent<PlayerInput>();
+        animator = transform.GetChild(input.playerIndex).GetChild(0).GetComponent<Animator>();
         RegisterCinemachine();
     }
 
