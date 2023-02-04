@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using Random = UnityEngine.Random;
 
 
 public enum ThrowableVeggie
@@ -39,6 +39,7 @@ public class PlayerController2D : MonoBehaviour
     public GameObject vegObject;
     Collider2D triggeringCollider;
     public ThrowableVeggie activeVeggie;
+    public bool infiniteAmmo;
 
     // Use this for initialization
     void Start()
@@ -106,12 +107,13 @@ public class PlayerController2D : MonoBehaviour
         var direction = facingRight ? Vector2.right : Vector2.left;
         GameObject fab;
         Vector2 direction_vector;
+
+        if (infiniteAmmo) activeVeggie = (ThrowableVeggie) Random.Range(1, 3);
         
         switch (activeVeggie)
         {
             case ThrowableVeggie.NONE:
                 return;
-                break;
             case ThrowableVeggie.POTATO:
                 fab = potatoFab;
                 direction_vector = (direction.normalized + Vector2.up) * 150;
