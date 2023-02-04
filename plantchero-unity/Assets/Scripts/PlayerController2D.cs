@@ -14,11 +14,12 @@ public class PlayerController2D : MonoBehaviour
 
     bool facingRight = true;
     float moveDirection = 0;
-    bool isGrounded = false;
+    public bool isGrounded = false;
     Vector3 cameraPos;
     Rigidbody2D r2d;
     CapsuleCollider2D mainCollider;
     Transform t;
+    public Animator animator;
 
     // Use this for initialization
     void Start()
@@ -26,17 +27,19 @@ public class PlayerController2D : MonoBehaviour
         t = transform;
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<CapsuleCollider2D>();
+        //animator = GetComponent<Animator>();
         r2d.freezeRotation = true;
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // Movement controls
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) )
         {
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
         }
@@ -55,11 +58,13 @@ public class PlayerController2D : MonoBehaviour
             {
                 facingRight = true;
                 t.localScale = new Vector3(Mathf.Abs(t.localScale.x), t.localScale.y, transform.localScale.z);
+                animator.SetBool ("facingRight", facingRight);
             }
             if (moveDirection < 0 && facingRight)
             {
                 facingRight = false;
                 t.localScale = new Vector3(-Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
+                animator.SetBool ("facingRight", facingRight);
             }
         }
 
@@ -93,6 +98,13 @@ public class PlayerController2D : MonoBehaviour
 
         // Apply movement velocity
         r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+
+        //Animator update
+        if (r2d.velocity.x > 0.001f ) animator.SetBool ("isRunning", true);
+        else animator.SetBool ("isRunning", false);
+
+        if (r2d.velocity.y > 0.001f) animator.SetBool ("isJumping", true);
+        else if (r2d.velocity.y < 0.001f) animator.SetBool ("isJumping", false);
 
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
