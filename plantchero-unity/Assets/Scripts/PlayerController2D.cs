@@ -51,7 +51,14 @@ public class PlayerController2D : MonoBehaviour
     public float stunTime;
     public float maxStunTime = 2f;
     public int deathCounter;
-    
+
+    private Dictionary<int, string> indexToColor = new()
+    {
+        { 0, "pink" },
+        { 1, "yellow" },
+        { 2, "blue" },
+        { 3, "purple" }
+    };
     // Use this for initialization
     void Start()
     {
@@ -67,6 +74,8 @@ public class PlayerController2D : MonoBehaviour
         initFacing = transform.rotation;
 
         var input = GetComponent<PlayerInput>();
+        string color = indexToColor[input.playerIndex];
+        transform.name = $"player-{color}";
         animator = transform.GetChild(input.playerIndex).GetChild(0).GetComponent<Animator>();
         RegisterCinemachine();
     }
@@ -92,10 +101,6 @@ public class PlayerController2D : MonoBehaviour
         if(t==null) return;
         move_vector = ctx.ReadValue<Vector2>();
         moveDirection = move_vector.x;
-        // if (isGrounded || r2d.velocity.magnitude < 0.01f && moveDirection < 0.05f)
-        // {
-        //     moveDirection = 0;
-        // }
 
         if (moveDirection != 0)
         {
@@ -145,6 +150,7 @@ public class PlayerController2D : MonoBehaviour
         var direction = facingRight ? Vector2.right : Vector2.left;
         GameObject fab;
         Vector2 direction_vector;
+        float power = 500f;
 
         if (infiniteAmmo) activeVeggie = (ThrowableVeggie) Random.Range(1, 3);
         
@@ -154,21 +160,27 @@ public class PlayerController2D : MonoBehaviour
                 return;
             case ThrowableVeggie.POTATO:
                 fab = potatoFab;
+                power = 800F;
                 direction_vector = (direction.normalized + Vector2.up) * 200;
                 break;
             case ThrowableVeggie.CARROT:
                 fab = carrotFab;
+                power = 200f;
                 direction_vector = (direction.normalized) * 350;
                 break;
             case ThrowableVeggie.BEETROOT:
+                power = 800F;
                 fab = beetrootFab;
-                direction_vector = (direction.normalized + Vector2.up) * 200;
+                direction_vector = Vector2.up * 350;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
         
         var veggie = Instantiate(fab);
+        var explosion = veggie.GetComponent<ExplodeOnCollision>();
+        explosion.power = power;
+        
         animator.SetTrigger("isThrowing");
         if (veggie.GetComponent<Throwable>()) veggie.GetComponent<Throwable>().SetOwer(gameObject);
         veggie.transform.position = throwTransform.position;

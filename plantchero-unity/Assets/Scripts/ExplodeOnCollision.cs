@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class ExplodeOnCollision : MonoBehaviour
 
     public GameObject ExplosionPrefab;
     Throwable throwable;
-
+    public float power = 500;
 
     // Start is called before the first frame update
     void Start()
@@ -34,14 +35,24 @@ public class ExplodeOnCollision : MonoBehaviour
 
             if (go != throwable.owner)
             {
-                if (go.tag.Equals("Player"))
+                var hits = Physics2D.OverlapCircleAll(transform.position, 2F);
+                foreach (var hit in hits)
                 {
-                    var direction = collision.transform.position - transform.position;
-                    go.GetComponent<Rigidbody2D>().AddForce(direction.normalized * 500f);
-                    var pc2d = go.GetComponent<PlayerController2D>();
-                    pc2d.stunTime = pc2d.maxStunTime;
+                    if (hit.tag.Equals("Player"))
+                    {
+                        Vector2 direction = (hit.transform.position - transform.position).normalized;
+                        direction = new Vector2(direction.x, Math.Abs(direction.y));
+                        var rb = hit.GetComponent<Rigidbody2D>();
+                        if (rb)
+                        {
+                            rb.AddForce(direction * power);
+                            // Debug.Log($"Apply {collision.gameObject.name} {direction} * {power}");
+                            var pc2d = go.GetComponent<PlayerController2D>();
+                            if(pc2d) pc2d.stunTime = pc2d.maxStunTime;
+                        }
+                    }
+                    Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
                 }
-                Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject, 0.1f);
             }
         }
