@@ -154,15 +154,15 @@ public class PlayerController2D : MonoBehaviour
                 return;
             case ThrowableVeggie.POTATO:
                 fab = potatoFab;
-                direction_vector = (direction.normalized + Vector2.up) * 250;
+                direction_vector = (direction.normalized + Vector2.up) * 200;
                 break;
             case ThrowableVeggie.CARROT:
                 fab = carrotFab;
-                direction_vector = (direction.normalized) * 400;
+                direction_vector = (direction.normalized) * 350;
                 break;
             case ThrowableVeggie.BEETROOT:
                 fab = beetrootFab;
-                direction_vector = (direction.normalized + Vector2.up) * 300;
+                direction_vector = (direction.normalized + Vector2.up) * 200;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
