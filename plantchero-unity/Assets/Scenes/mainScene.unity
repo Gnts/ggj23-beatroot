@@ -778,6 +778,7 @@ MonoBehaviour:
   state: 0
   time: 0
   ui_timer: {fileID: 1159587089}
+  game_end: {fileID: 1395148563}
 --- !u!1001 &824515744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1274,6 +1275,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1395148563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1444009015276455667, guid: 759f50a275fba7842b5810710b0113be,
+    type: 3}
+  m_PrefabInstance: {fileID: 824515744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1474133316
 GameObject:
   m_ObjectHideFlags: 0
