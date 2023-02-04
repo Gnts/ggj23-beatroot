@@ -32,6 +32,7 @@ public class PlayerController2D : MonoBehaviour
     CapsuleCollider2D mainCollider;
     Transform t;
     public Animator animator;
+    private Quaternion initFacing;
     private Vector2 move_vector;
     private bool jump;
     public Transform throwTransform;
@@ -57,6 +58,7 @@ public class PlayerController2D : MonoBehaviour
         r2d.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
         vegObject = null;
+        initFacing = transform.rotation;
 
         RegisterCinemachine();
     }
@@ -96,6 +98,7 @@ public class PlayerController2D : MonoBehaviour
                 localScale = new Vector3(Mathf.Abs(localScale.x), localScale.y, transform.localScale.z);
                 t.localScale = localScale;
                 animator.SetBool ("facingRight", facingRight);
+                transform.Rotate(Vector3.up, -60.0f);
             }
             if (moveDirection < 0 && facingRight)
             {
@@ -104,7 +107,12 @@ public class PlayerController2D : MonoBehaviour
                 localScale = new Vector3(-Mathf.Abs(localScale.x), localScale.y, localScale.z);
                 t.localScale = localScale;
                 animator.SetBool ("facingRight", facingRight);
+                transform.Rotate(Vector3.up, 60.0f);
             }
+        }
+        else
+        {
+            transform.rotation = initFacing;
         }
     }
     
@@ -168,6 +176,8 @@ public class PlayerController2D : MonoBehaviour
             Vegetable veg = triggeringCollider.GetComponent<Vegetable>();
             if (veg)
             {
+                animator.SetTrigger("isDigging");
+                
                 vegObject = veg.DigIt(digForce);
 
                 if (vegObject) pickVeggie(veg);
@@ -231,6 +241,7 @@ public class PlayerController2D : MonoBehaviour
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(colliderRadius, 0, 0), isGrounded ? Color.green : Color.red);
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
