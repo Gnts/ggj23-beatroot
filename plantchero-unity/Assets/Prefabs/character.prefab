@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3.4
-  jumpHeight: 6.5
+  jumpHeight: 8
   gravityScale: 1.5
   isGrounded: 0
   animator: {fileID: 1081252170210929886}

@@ -86,13 +86,22 @@ public class PlayerController2D : MonoBehaviour
     public void Shoot(InputAction.CallbackContext ctx)
     {
         if(!ctx.started) return;
-        // var veggie = Instantiate(carrotFab);
-        var veggie = Instantiate(potatoFab);
+        bool isCarrot = true;
+        var fab = isCarrot ? carrotFab : potatoFab;
+        var veggie = Instantiate(fab);
         var direction = facingRight ? Vector2.right : Vector2.left;
         veggie.transform.position = throwTransform.position;
         veggie.transform.rotation = facingRight ? Quaternion.Euler(0,0,90) : Quaternion.Euler(0,0,-90);
         var rg = veggie.GetComponent<Rigidbody2D>();
-        rg.AddForce((direction.normalized + Vector2.up) * 200);
+
+        if (isCarrot)
+        {
+            rg.AddForce((direction.normalized) * 200);
+        }
+        else
+        {
+            rg.AddForce((direction.normalized + Vector2.up) * 150);
+        }
     }
     
     void FixedUpdate()
