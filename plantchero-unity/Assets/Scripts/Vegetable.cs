@@ -14,6 +14,8 @@ public class Vegetable : MonoBehaviour
     public float healthInterval = 2.0f; 
     float nextTime = 0;
 
+    float scaleResetTime = 0;
+
     public void OnEnable()
     {
         count++;
@@ -40,12 +42,19 @@ public class Vegetable : MonoBehaviour
                 currentHealth += 1;
             }
             nextTime += healthInterval; 
-         }    
+        }  
+
+        if (Time.time >= scaleResetTime) 
+        {
+            transform.localScale = new Vector3(1,1,1);
+        }
     }
 
     public GameObject DigIt(int amount)
     {
         transform.localScale = new Vector3(transform.lossyScale.x * 0.9f, transform.lossyScale.y * 1.1f, transform.lossyScale.z * 0.9f);
+        scaleResetTime = Time.time + 2;
+
         currentHealth = currentHealth - amount;
         if (currentHealth < 1)
         {
