@@ -11,7 +11,7 @@ public enum GameState {
 public class Game : MonoBehaviour
 {
     public GameState state;
-    public const int MaxTime = 2;
+    public const int MaxTime = 60;
     public float time;
     public TextMeshProUGUI ui_timer;
     public GameObject game_end;
