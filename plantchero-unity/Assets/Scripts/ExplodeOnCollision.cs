@@ -35,7 +35,7 @@ public class ExplodeOnCollision : MonoBehaviour
             if (go != throwable.owner)
             {
                 Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
-                Destroy(gameObject, 1);
+                Destroy(gameObject, 0.1f);
             }
         }
     }

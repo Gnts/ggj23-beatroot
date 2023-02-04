@@ -8,7 +8,7 @@ public class Vegetable : MonoBehaviour
     public static int count = 0;
     public int currentHealth;
     public ThrowableVeggie type;
-    int maxHelath = 10;
+    int maxHelath = 3;
 
     public float healthInterval = 2.0f; 
     float nextTime = 0;
