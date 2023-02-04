@@ -1258,6 +1258,8 @@ MonoBehaviour:
     type: 3}
   potatoFab: {fileID: 2986768306357618069, guid: 5a854243a5f2043b08d170df0b2ba8d3,
     type: 3}
+  beetrootFab: {fileID: 2986768306357618069, guid: 6d349d91787066a4f82d0662af920005,
+    type: 3}
   digForce: 1
   vegObject: {fileID: 0}
   activeVeggie: 0
