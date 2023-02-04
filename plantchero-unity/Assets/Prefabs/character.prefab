@@ -1249,6 +1249,9 @@ MonoBehaviour:
   gravityScale: 1.5
   isGrounded: 0
   animator: {fileID: 1081252170210929886}
+  throwTransform: {fileID: 3329920246195238000}
+  carrotFab: {fileID: 2986768306357618069, guid: 64ed5bde7d8aea74c8ebf8b10f3d3a68,
+    type: 3}
 --- !u!114 &1701375600628769053
 MonoBehaviour:
   m_ObjectHideFlags: 0
