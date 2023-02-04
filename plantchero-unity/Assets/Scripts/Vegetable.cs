@@ -5,6 +5,7 @@ using UnityEngine;
 public class Vegetable : MonoBehaviour
 {
     public int currentHealth;
+    public ThrowableVeggie type;
     int maxHelath = 10;
 
     public float healthInterval = 2.0f; 
@@ -25,7 +26,6 @@ public class Vegetable : MonoBehaviour
                 currentHealth += 1;
             }
             nextTime += healthInterval; 
- 
          }    
     }
 

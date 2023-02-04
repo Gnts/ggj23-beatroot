@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  type: 2
   healthInterval: 1
 --- !u!1001 &569054552463987951
 PrefabInstance:

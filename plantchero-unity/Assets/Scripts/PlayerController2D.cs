@@ -12,7 +12,8 @@ public enum ThrowableVeggie
 {
     NONE,
     POTATO,
-    CARROT
+    CARROT,
+    BEETROOT
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -61,7 +62,9 @@ public class PlayerController2D : MonoBehaviour
 
     private void RegisterCinemachine()
     {
-        var ctg = GameObject.Find("TargetGroup").GetComponent<CinemachineTargetGroup>();
+        var go = GameObject.Find("TargetGroup");
+        if(!go) return;
+        var ctg = go.GetComponent<CinemachineTargetGroup>();
         var ct = new CinemachineTargetGroup.Target
         {
             target = transform,
@@ -149,6 +152,8 @@ public class PlayerController2D : MonoBehaviour
         veggie.transform.rotation = facingRight ? Quaternion.Euler(0,0,90) : Quaternion.Euler(0,0,-90);
         var rg = veggie.GetComponent<Rigidbody2D>();
         rg.AddForce(direction_vector);
+
+        activeVeggie = ThrowableVeggie.NONE;
     }
     private void digForVeggie()
     {
@@ -159,9 +164,15 @@ public class PlayerController2D : MonoBehaviour
             {
                 vegObject = veg.DigIt(digForce);
 
-                if (vegObject) vegObject.transform.SetParent(transform);
+                if (vegObject) pickVeggie(veg);
             }
         }
+    }
+
+    private void pickVeggie(Vegetable veggie)
+    {
+        activeVeggie = veggie.type;
+        GameObject.Destroy(veggie.gameObject);
     }
     
     void FixedUpdate()
