@@ -24,6 +24,7 @@ public class PlayerController2D : MonoBehaviour
     private bool jump;
     public Transform throwTransform;
     public GameObject carrotFab;
+    public GameObject potatoFab;
 
     // Use this for initialization
     void Start()
@@ -85,12 +86,13 @@ public class PlayerController2D : MonoBehaviour
     public void Shoot(InputAction.CallbackContext ctx)
     {
         if(!ctx.started) return;
-        var veggie = Instantiate(carrotFab);
+        // var veggie = Instantiate(carrotFab);
+        var veggie = Instantiate(potatoFab);
+        var direction = facingRight ? Vector2.right : Vector2.left;
         veggie.transform.position = throwTransform.position;
         veggie.transform.rotation = facingRight ? Quaternion.Euler(0,0,90) : Quaternion.Euler(0,0,-90);
         var rg = veggie.GetComponent<Rigidbody2D>();
-        var direction = facingRight ? Vector2.right : Vector2.left;
-        rg.AddForce(direction * 200);
+        rg.AddForce((direction.normalized + Vector2.up) * 200);
     }
     
     void FixedUpdate()
