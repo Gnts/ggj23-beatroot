@@ -15,7 +15,6 @@ public class PlayerController2D : MonoBehaviour
     bool facingRight = true;
     float moveDirection = 0;
     public bool isGrounded = false;
-    Vector3 cameraPos;
     Rigidbody2D r2d;
     CapsuleCollider2D mainCollider;
     Transform t;
@@ -99,12 +98,32 @@ public class PlayerController2D : MonoBehaviour
         // Apply movement velocity
         r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
 
-        //Animator update
-        if (r2d.velocity.x > 0.001f ) animator.SetBool ("isRunning", true);
+        //Animator updates
+        if (Mathf.Abs(r2d.velocity.x) > 0.001f ) animator.SetBool ("isRunning", true);
         else animator.SetBool ("isRunning", false);
 
-        if (r2d.velocity.y > 0.001f) animator.SetBool ("isJumping", true);
-        else if (r2d.velocity.y < 0.001f) animator.SetBool ("isJumping", false);
+        if (r2d.velocity.y > 0.01f && !isGrounded) 
+        {
+            animator.SetBool ("isJumping", true);
+        }
+        else 
+        {
+            animator.SetBool("isJumping", false);
+        }
+        
+        
+        if (r2d.velocity.y < -0.01f && !isGrounded) 
+        {
+            animator.SetBool ("isFalling", true);
+        }
+        else 
+        {
+            animator.SetBool("isFalling", false);
+        }
+        
+
+        Debug.Log(r2d.velocity.y + " : " + t);
+                
 
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
