@@ -491,6 +491,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2232551821301239619, guid: 4d8c763520cd220438f2fe0608088a6b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875282151467792617, guid: 4d8c763520cd220438f2fe0608088a6b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898187692121272738, guid: 4d8c763520cd220438f2fe0608088a6b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8013453130834502488, guid: 4d8c763520cd220438f2fe0608088a6b,
         type: 3}
       propertyPath: m_RootOrder
@@ -550,6 +565,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LEVEL
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013453130834502491, guid: 4d8c763520cd220438f2fe0608088a6b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8c763520cd220438f2fe0608088a6b, type: 3}
