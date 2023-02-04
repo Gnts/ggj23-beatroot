@@ -36,7 +36,10 @@ public class ExplodeOnCollision : MonoBehaviour
             {
                 if (go.tag.Equals("Player"))
                 {
-                    go.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 2000f);
+                    var direction = collision.transform.position - transform.position;
+                    go.GetComponent<Rigidbody2D>().AddForce(direction.normalized * 500f);
+                    var pc2d = go.GetComponent<PlayerController2D>();
+                    pc2d.stunTime = pc2d.maxStunTime;
                 }
                 Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject, 0.1f);
