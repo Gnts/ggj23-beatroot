@@ -34,8 +34,12 @@ public class ExplodeOnCollision : MonoBehaviour
 
             if (go != throwable.owner)
             {
+                if (go.tag.Equals("Player"))
+                {
+                    go.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 2000f);
+                }
                 Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
-                Destroy(gameObject, 1);
+                Destroy(gameObject, 0.1f);
             }
         }
     }

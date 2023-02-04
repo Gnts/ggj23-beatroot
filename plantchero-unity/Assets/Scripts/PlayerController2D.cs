@@ -46,6 +46,8 @@ public class PlayerController2D : MonoBehaviour
     public ThrowableVeggie activeVeggie;
     public bool infiniteAmmo;
 
+    public int deathCounter;
+    
     // Use this for initialization
     void Start()
     {
