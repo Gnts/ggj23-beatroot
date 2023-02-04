@@ -96,6 +96,9 @@ GameObject:
   - component: {fileID: 7055695030752245721}
   - component: {fileID: -2094407388935662530}
   - component: {fileID: -5860976799644967161}
+  - component: {fileID: -3308662225561553549}
+  - component: {fileID: 5515787912633321286}
+  - component: {fileID: 4524622835609740138}
   m_Layer: 0
   m_Name: carrot
   m_TagString: Untagged
@@ -183,6 +186,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+--- !u!114 &-3308662225561553549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986768306357618069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f94721b6a59af42b4d37810cbdfd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionPrefab: {fileID: 3823543717937924172, guid: 2343ea50dea8ed641a210534b22a6a25,
+    type: 3}
+--- !u!114 &5515787912633321286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986768306357618069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1240a1d273968374b9551042d8aab67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+--- !u!114 &4524622835609740138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986768306357618069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89d33d3a30b99241a607cfa7078c634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secsToDestroy: 10
 --- !u!1 &5337436913465888606
 GameObject:
   m_ObjectHideFlags: 0

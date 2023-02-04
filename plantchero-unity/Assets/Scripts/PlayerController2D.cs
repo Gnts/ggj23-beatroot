@@ -148,6 +148,7 @@ public class PlayerController2D : MonoBehaviour
         }
         
         var veggie = Instantiate(fab);
+        if (veggie.GetComponent<Throwable>()) veggie.GetComponent<Throwable>().SetOwer(gameObject);
         veggie.transform.position = throwTransform.position;
         veggie.transform.rotation = facingRight ? Quaternion.Euler(0,0,90) : Quaternion.Euler(0,0,-90);
         var rg = veggie.GetComponent<Rigidbody2D>();
