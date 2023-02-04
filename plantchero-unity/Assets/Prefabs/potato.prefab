@@ -131,8 +131,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024881775, y: -0.0033289783}
-  m_Size: {x: 0.5668744, y: 0.5668744}
+  m_Offset: {x: 0.0016180273, y: -0.032408588}
+  m_Size: {x: 0.376109, y: 0.49010274}
   m_Direction: 0
 --- !u!50 &7055695030752245721
 Rigidbody2D:
@@ -167,3 +167,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 616db773583334518809e2e8d67aa4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationAxis: {x: 0, y: 0, z: 1}

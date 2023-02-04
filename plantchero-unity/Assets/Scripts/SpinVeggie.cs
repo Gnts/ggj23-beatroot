@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SpinVeggie : MonoBehaviour
 {
+    public Vector3 rotationAxis = Vector3.up;
     void Update()
     {
-        transform.Rotate(Vector3.up, Time.deltaTime * 360);
+        transform.Rotate(rotationAxis, Time.deltaTime * 360);
     }
 }
