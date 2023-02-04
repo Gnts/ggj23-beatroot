@@ -86,7 +86,7 @@ public class PlayerController2D : MonoBehaviour
     public void Shoot(InputAction.CallbackContext ctx)
     {
         if(!ctx.started) return;
-        bool isCarrot = true;
+        bool isCarrot = false;
         var fab = isCarrot ? carrotFab : potatoFab;
         var veggie = Instantiate(fab);
         var direction = facingRight ? Vector2.right : Vector2.left;
