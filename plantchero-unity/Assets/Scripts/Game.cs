@@ -20,6 +20,8 @@ public class Game : MonoBehaviour
     public GameObject game_end;
 
     public Button buttonPlayAgain, buttonExit;
+
+    public AudioSource audioSource;
     
     void Start()
     {
@@ -40,11 +42,13 @@ public class Game : MonoBehaviour
             timerGo.SetActive(false);
             game_end.SetActive(true);
         }
+        else if ((int) time < 10) audioSource.pitch = 1.5f;
+        else if ((int) time < 20) audioSource.pitch = 1.2f;
+        
     }
 
     void RestartLevel()
     {
-        Debug.Log("You have clicked the button!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
