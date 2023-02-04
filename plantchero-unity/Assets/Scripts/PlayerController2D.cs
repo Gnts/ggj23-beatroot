@@ -87,7 +87,7 @@ public class PlayerController2D : MonoBehaviour
         if(!ctx.started) return;
         var veggie = Instantiate(carrotFab);
         veggie.transform.position = throwTransform.position;
-        veggie.transform.rotation = Quaternion.identity;
+        veggie.transform.rotation = facingRight ? Quaternion.Euler(0,0,90) : Quaternion.Euler(0,0,-90);
         var rg = veggie.GetComponent<Rigidbody2D>();
         var direction = facingRight ? Vector2.right : Vector2.left;
         rg.AddForce(direction * 200);
