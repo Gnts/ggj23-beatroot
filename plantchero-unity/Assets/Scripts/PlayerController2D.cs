@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -53,6 +55,22 @@ public class PlayerController2D : MonoBehaviour
         r2d.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
         vegObject = null;
+
+        RegisterCinemachine();
+    }
+
+    private void RegisterCinemachine()
+    {
+        var ctg = GameObject.Find("TargetGroup").GetComponent<CinemachineTargetGroup>();
+        var ct = new CinemachineTargetGroup.Target
+        {
+            target = transform,
+            radius = 1,
+            weight = 1
+        };
+        var targets = ctg.m_Targets.ToList();
+        targets.Add(ct);
+        ctg.m_Targets = targets.ToArray();
     }
 
     public void Movement(InputAction.CallbackContext ctx)
