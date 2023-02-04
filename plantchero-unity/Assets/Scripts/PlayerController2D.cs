@@ -1,11 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+
+public enum ThrowableVeggie
+{
+    NONE,
+    POTATO,
+    CARROT
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
-
 public class PlayerController2D : MonoBehaviour
 {
     // Move player in 2D space
@@ -29,6 +38,7 @@ public class PlayerController2D : MonoBehaviour
 	public int digForce = 1;
     public GameObject vegObject;
     Collider2D triggeringCollider;
+    public ThrowableVeggie activeVeggie;
 
     // Use this for initialization
     void Start()
@@ -46,6 +56,7 @@ public class PlayerController2D : MonoBehaviour
 
     public void Movement(InputAction.CallbackContext ctx)
     {
+        if(t==null) return;
         move_vector = ctx.ReadValue<Vector2>();
         moveDirection = move_vector.x;
         // if (isGrounded || r2d.velocity.magnitude < 0.01f && moveDirection < 0.05f)
@@ -92,30 +103,32 @@ public class PlayerController2D : MonoBehaviour
     public void Shoot(InputAction.CallbackContext ctx)
     {
         if(!ctx.started) return;
-        bool isCarrot = true;
-        var fab = isCarrot ? carrotFab : potatoFab;
-        var veggie = Instantiate(fab);
         var direction = facingRight ? Vector2.right : Vector2.left;
+        GameObject fab;
+        Vector2 direction_vector;
+        
+        switch (activeVeggie)
+        {
+            case ThrowableVeggie.NONE:
+                return;
+                break;
+            case ThrowableVeggie.POTATO:
+                fab = potatoFab;
+                direction_vector = (direction.normalized + Vector2.up) * 150;
+                break;
+            case ThrowableVeggie.CARROT:
+                fab = carrotFab;
+                direction_vector = (direction.normalized) * 200;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
+        var veggie = Instantiate(fab);
         veggie.transform.position = throwTransform.position;
         veggie.transform.rotation = facingRight ? Quaternion.Euler(0,0,90) : Quaternion.Euler(0,0,-90);
         var rg = veggie.GetComponent<Rigidbody2D>();
-		
-		if (isCarrot)
-        {
-            rg.AddForce((direction.normalized) * 200);
-
-
-
-
-
-
-
-
-        }
-        else
-        {
-            rg.AddForce((direction.normalized + Vector2.up) * 150);
-        }
+        rg.AddForce(direction_vector);
     }
     private void digForVeggie()
     {
