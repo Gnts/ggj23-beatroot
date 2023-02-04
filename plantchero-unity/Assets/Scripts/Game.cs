@@ -42,9 +42,13 @@ public class Game : MonoBehaviour
             timerGo.SetActive(false);
             game_end.SetActive(true);
         }
-        else if ((int) time < 10) audioSource.pitch = 1.5f;
-        else if ((int) time < 20) audioSource.pitch = 1.2f;
         
+        //update audio pitch
+        if (audioSource)
+        {
+            if ((int) time < 10) audioSource.pitch = 1.5f;
+            else if ((int) time < 20) audioSource.pitch = 1.2f;
+        }
     }
 
     void RestartLevel()

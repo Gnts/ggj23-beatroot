@@ -9750,6 +9750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8082796264097162252}
+  - component: {fileID: 3035942547897638253}
   m_Layer: 0
   m_Name: VFX_CarrotXplosion
   m_TagString: Untagged
@@ -9776,6 +9777,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3035942547897638253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823543717937924172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89d33d3a30b99241a607cfa7078c634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secsToDestroy: 1
 --- !u!1 &4586336171764021870
 GameObject:
   m_ObjectHideFlags: 0
