@@ -1,15 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Vegetable : MonoBehaviour
 {
+    public static int count = 0;
     public int currentHealth;
     public ThrowableVeggie type;
     int maxHelath = 10;
 
     public float healthInterval = 2.0f; 
     float nextTime = 0;
+
+    public void OnEnable()
+    {
+        count++;
+    }
+
+    private void OnDisable()
+    {
+        count--;
+    }
 
     // Start is called before the first frame update
     void Start()
