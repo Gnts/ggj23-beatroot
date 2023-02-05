@@ -1795,7 +1795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <Uproot Battle>
+  m_text: <Beat Root>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81c5c4ffda9a22b46bdc996c289511e2, type: 2}
   m_sharedMaterial: {fileID: 7589385855660870537, guid: 81c5c4ffda9a22b46bdc996c289511e2,
