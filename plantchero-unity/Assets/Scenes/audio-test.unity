@@ -895,11 +895,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9159072161686563681, guid: 759f50a275fba7842b5810710b0113be,
-        type: 3}
-      propertyPath: m_text
-      value: Press ENTER/START to begin!
-      objectReference: {fileID: 0}
     - target: {fileID: 9159072162445806980, guid: 759f50a275fba7842b5810710b0113be,
         type: 3}
       propertyPath: m_IsActive

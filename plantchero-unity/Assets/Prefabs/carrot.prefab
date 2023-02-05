@@ -203,6 +203,7 @@ MonoBehaviour:
   power: 500
   gruntSFX: {fileID: 5374602100174838983, guid: d7dd344f94daa474fbc99489c623feca,
     type: 3}
+  boomSFX: {fileID: 5374602100174838983, guid: 743e492f94bca4c60a15114a80bf4417, type: 3}
 --- !u!114 &5515787912633321286
 MonoBehaviour:
   m_ObjectHideFlags: 0

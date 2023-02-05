@@ -11,6 +11,7 @@ public class ExplodeOnCollision : MonoBehaviour
     Throwable throwable;
     public float power = 500;
     public GameObject gruntSFX;
+    public GameObject boomSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,7 @@ public class ExplodeOnCollision : MonoBehaviour
                     }
                 }
                 Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+                Instantiate(boomSFX, transform.position, Quaternion.identity);
                 Destroy(gameObject, 0.1f);
             }
         }
