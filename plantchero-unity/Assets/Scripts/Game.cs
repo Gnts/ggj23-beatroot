@@ -71,7 +71,10 @@ public class Game : MonoBehaviour
 
                 break;
             case GameState.ENDSCREEN:
-
+                if (Input.GetKey(KeyCode.Return) || Gamepad.current.startButton.IsPressed())
+                {
+                    ChangeState(GameState.LOBBY);
+                }
                 break;
         }
     }
