@@ -17,6 +17,7 @@ public class DestroyLine : MonoBehaviour
             controller.beetrootIcon.gameObject.SetActive(false);
             controller.carrotIcon.gameObject.SetActive(false);
             controller.potatoIcon.gameObject.SetActive(false);
+            Game.singleton.UpdateScores();
         }
     }
 }

@@ -15,6 +15,7 @@ public enum GameState {
 
 public class Game : MonoBehaviour
 {
+    public static Game singleton;
     public GameState state;
     public const int MaxTime = 60;
     public float time;
@@ -36,9 +37,13 @@ public class Game : MonoBehaviour
     public TextMeshProUGUI winner_text;
     public GameObject planter;
 
+    public List<PlayerController2D> players = new List<PlayerController2D>();
+    public Transform score_canvas;
+    public GameObject score_fab;
     
     void Start()
     {
+        singleton = this;
         time = MaxTime;
 
         buttonPlayAgain.onClick.AddListener(RestartLevel);
@@ -69,6 +74,26 @@ public class Game : MonoBehaviour
 
                 break;
         }
+    }
+
+    public void UpdateScores()
+    {
+        int winnerIndex = 0;
+        int winnerDeathCount = 999;
+        foreach (var player in players)
+        {
+            if (player.deathCounter >= winnerDeathCount) continue;
+            winnerIndex = player.playerIndex;
+            winnerDeathCount = player.deathCounter;
+        }
+
+        foreach (var player in players)
+        {
+            var scoreCard = player.score_card.GetComponent<IUpdateScoreCard>();
+            scoreCard.SetCrown(player.playerIndex == winnerIndex);
+            scoreCard.SetScore(player.deathCounter);
+        }
+        
     }
 
     void UpdatePlaying()
@@ -149,8 +174,6 @@ public void ChangeState(GameState newState)
         planter.SetActive(false);
         PlayAudio(endScreenMusic);
 
-
-        var players = FindObjectsOfType<PlayerController2D>();
         int winnerIndex = 0;
         int winnerDeathCount = 999;
         foreach (var player in players)
@@ -161,7 +184,7 @@ public void ChangeState(GameState newState)
         }
 
         winner_text.text += $"\n{PlayerController2D.indexToColor[winnerIndex]}";
-        winner_text.color = Color.magenta;
+        winner_text.color = PlayerController2D.indexToColorName[winnerIndex];
     }
 
     void ChangeUI(GameState newState)

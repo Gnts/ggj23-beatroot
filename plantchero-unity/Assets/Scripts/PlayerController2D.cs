@@ -53,6 +53,7 @@ public class PlayerController2D : MonoBehaviour
     public float maxStunTime = 2f;
     public int playerIndex;
     public int deathCounter;
+    public Transform score_card;
     public static Dictionary<int, string> indexToColor = new()
     {
         { 0, "pink" },
@@ -60,6 +61,24 @@ public class PlayerController2D : MonoBehaviour
         { 2, "blue" },
         { 3, "purple" }
     };
+
+    private void OnEnable()
+    {
+        Game.singleton.players.Add(this);
+        score_card = Instantiate(Game.singleton.score_fab, Game.singleton.score_canvas).transform;
+        Game.singleton.UpdateScores();
+        var input = GetComponent<PlayerInput>();
+        playerIndex = input.playerIndex;
+        score_card.GetComponent<IUpdateScoreCard>().SetBunny(playerIndex);
+    }
+
+    private void OnDisable()
+    {
+        Game.singleton.players.Remove(this);
+        GameObject.Destroy(score_card);
+        Game.singleton.UpdateScores();
+    }
+
     public static Dictionary<int, Color> indexToColorName = new()
     {
         { 0, new Color(255,105,180) },
@@ -67,7 +86,7 @@ public class PlayerController2D : MonoBehaviour
         { 2, Color.blue },
         { 3, new Color(147,112,219) }
     };
-    // Use this for initialization
+
     void Start()
     {
         t = transform;
@@ -205,6 +224,7 @@ public class PlayerController2D : MonoBehaviour
         carrotIcon.gameObject.SetActive(false);
         potatoIcon.gameObject.SetActive(false);
     }
+    
     private void digForVeggie()
     {
         if(triggeringCollider && !vegObject)
