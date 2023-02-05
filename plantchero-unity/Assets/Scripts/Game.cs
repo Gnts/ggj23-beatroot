@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -57,11 +58,10 @@ public class Game : MonoBehaviour
         switch(state) 
         {
             case GameState.LOBBY:
-                if (Input.GetKey(KeyCode.Return))
+                if (Input.GetKey(KeyCode.Return) || Gamepad.current.startButton.IsPressed())
                 {
                     ChangeState(GameState.COUNTDOWN);
                 }
-
                 break;
             case GameState.COUNTDOWN:
                 //Canvas obj takes care of state change
