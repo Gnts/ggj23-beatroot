@@ -44,7 +44,7 @@ public class Game : MonoBehaviour
         buttonPlayAgain.onClick.AddListener(RestartLevel);
         buttonExit.onClick.AddListener(ExitGame);
 
-        ChangeState(GameState.PLAYING);
+        ChangeState(GameState.LOBBY);
     }
 
     void Update()
@@ -190,6 +190,13 @@ void ChangeState(GameState newState)
         audioSource.clip = clip;
         audioSource.pitch = 1;
         audioSource.Play();
+    }
+
+    public bool IsMovementAllowed()
+    {
+        if ((state == GameState.PLAYING) || (state == GameState.ENDSCREEN) )  return true;
+
+        return false;
     }
     
     void RestartLevel()

@@ -53,8 +53,6 @@ public class PlayerController2D : MonoBehaviour
     public float maxStunTime = 2f;
     public int playerIndex;
     public int deathCounter;
-
-    private bool movementAllowed = true;
     public static Dictionary<int, string> indexToColor = new()
     {
         { 0, "pink" },
@@ -153,7 +151,8 @@ public class PlayerController2D : MonoBehaviour
     {
         if (isGrounded)
         {
-            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
+            float limiter = gameController.IsMovementAllowed() ? 1.0f : 0.3f;
+            r2d.velocity = new Vector2(r2d.velocity.x, (jumpHeight * limiter) );
         }
     }
     
@@ -259,7 +258,7 @@ public class PlayerController2D : MonoBehaviour
         }
 
         // Apply movement velocity
-        if((stunTime < 0) && movementAllowed) r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+        if((stunTime < 0) && gameController.IsMovementAllowed()) r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
 
         //Animator updates
         if (Mathf.Abs(r2d.velocity.x) > 0.001f ) animator.SetBool ("isRunning", true);
@@ -298,10 +297,5 @@ public class PlayerController2D : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         triggeringCollider = null;
-    }
-
-    public void SetMovementAllowed(bool allowed)
-    {
-        movementAllowed = allowed;
     }
 }
