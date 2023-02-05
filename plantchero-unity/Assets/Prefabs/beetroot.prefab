@@ -187,6 +187,8 @@ MonoBehaviour:
   ExplosionPrefab: {fileID: 3823543717937924172, guid: b275e47fc7ab0f944b1a85d0ad5ad59a,
     type: 3}
   power: 500
+  gruntSFX: {fileID: 5374602100174838983, guid: d7dd344f94daa474fbc99489c623feca,
+    type: 3}
 --- !u!114 &987666222493945457
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ExplodeOnCollision : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ExplodeOnCollision : MonoBehaviour
     public GameObject ExplosionPrefab;
     Throwable throwable;
     public float power = 500;
+    public GameObject gruntSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +50,11 @@ public class ExplodeOnCollision : MonoBehaviour
                             rb.AddForce(direction * power);
                             // Debug.Log($"Apply {collision.gameObject.name} {direction} * {power}");
                             var pc2d = go.GetComponent<PlayerController2D>();
-                            if(pc2d) pc2d.stunTime = pc2d.maxStunTime;
+                            if (pc2d)
+                            {
+                                pc2d.stunTime = pc2d.maxStunTime;
+                                Instantiate(gruntSFX, hit.transform.position, Quaternion.identity);
+                            }
                         }
                     }
                     Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);

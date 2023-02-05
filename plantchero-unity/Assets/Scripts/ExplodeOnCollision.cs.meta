@@ -3,7 +3,10 @@ guid: b9f94721b6a59af42b4d37810cbdfd21
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ExplosionPrefab: {instanceID: 0}
+  - gruntSFX: {fileID: 5374602100174838983, guid: d7dd344f94daa474fbc99489c623feca,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
