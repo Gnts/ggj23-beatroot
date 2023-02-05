@@ -131,6 +131,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1672451320}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &52033594 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1659403934657901819, guid: 759f50a275fba7842b5810710b0113be,
+    type: 3}
+  m_PrefabInstance: {fileID: 824515744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &61334703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 61334703, guid: 4d8c763520cd220438f2fe0608088a6b,
@@ -793,6 +799,10 @@ MonoBehaviour:
   buttonExit: {fileID: 824515746}
   winner_text: {fileID: 824515748}
   planter: {fileID: 1025309892}
+  players: []
+  score_canvas: {fileID: 52033594}
+  score_fab: {fileID: 3381170878112271336, guid: ef83254641c461a42a04cf79e0795139,
+    type: 3}
 --- !u!1001 &824515744
 PrefabInstance:
   m_ObjectHideFlags: 0
