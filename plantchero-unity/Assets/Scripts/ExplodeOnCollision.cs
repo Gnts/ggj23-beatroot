@@ -57,8 +57,8 @@ public class ExplodeOnCollision : MonoBehaviour
                             }
                         }
                     }
-                    Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
                 }
+                Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject, 0.1f);
             }
         }

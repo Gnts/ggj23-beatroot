@@ -322,7 +322,9 @@ public class PlayerController2D : MonoBehaviour
     {
         deathCounter++;
         GameObject explosion = explosionFabs[playerIndex];
-        Instantiate(explosion, transform.position, transform.rotation);
+        Vector3 pos = transform.position;
+        Quaternion rot = transform.rotation;
+        Instantiate(explosion, pos, rot);
         
         transform.position = new Vector3(0, 6, 0);
         activeVeggie = ThrowableVeggie.NONE;
