@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
@@ -22,7 +23,9 @@ public class Game : MonoBehaviour
     public Button buttonPlayAgain, buttonExit;
 
     public AudioSource audioSource;
-    
+    private bool gameEnded;
+    public TextMeshProUGUI winner_text;
+
     void Start()
     {
         time = MaxTime;
@@ -37,10 +40,10 @@ public class Game : MonoBehaviour
         time = Math.Clamp(time, 0, MaxTime);
         
         ui_timer.text = ((int) time).ToString(CultureInfo.InvariantCulture);
-        if(((int) time) == 0)
+        if (((int)time) == 0 && !gameEnded)
         {
-            timerGo.SetActive(false);
-            game_end.SetActive(true);
+            gameEnded = true;
+            GameEnd();
         }
         
         //update audio pitch
@@ -51,6 +54,25 @@ public class Game : MonoBehaviour
         }
     }
 
+    void GameEnd()
+    {
+        timerGo.SetActive(false);
+        game_end.SetActive(true);
+
+        var players = FindObjectsOfType<PlayerController2D>();
+        int winnerIndex = 0;
+        int winnerDeathCount = 999;
+        foreach (var player in players)
+        {
+            if (player.deathCounter >= winnerDeathCount) continue;
+            winnerIndex = player.playerIndex;
+            winnerDeathCount = player.deathCounter;
+        }
+
+        winner_text.text += $"\n{PlayerController2D.indexToColor[winnerIndex]}";
+        winner_text.color = Color.magenta;
+    }
+    
     void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
