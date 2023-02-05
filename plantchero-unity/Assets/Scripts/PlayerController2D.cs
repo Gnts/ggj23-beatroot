@@ -173,13 +173,13 @@ public class PlayerController2D : MonoBehaviour
                 break;
             case ThrowableVeggie.CARROT:
                 fab = carrotFab;
-                power = 200f;
+                power = 250f;
                 direction_vector = (direction.normalized) * 350;
                 break;
             case ThrowableVeggie.BEETROOT:
-                power = 800F;
+                power = 400f;
                 fab = beetrootFab;
-                direction_vector = Vector2.up * 350;
+                direction_vector = Vector2.up * 450;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
