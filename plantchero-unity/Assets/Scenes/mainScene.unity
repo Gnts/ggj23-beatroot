@@ -906,12 +906,18 @@ MonoBehaviour:
   state: 0
   time: 0
   ui_timer: {fileID: 1159587089}
-  timerGo: {fileID: 824515745}
-  game_end: {fileID: 1395148563}
+  canvasTitle: {fileID: 1016695884}
+  canvasCountdown: {fileID: 1599542087}
+  canvasWinScreen: {fileID: 1395148563}
+  canvasTimer: {fileID: 824515745}
+  audioSource: {fileID: 693087294}
+  lobbyMusic: {fileID: 8300000, guid: 4a07935a42fb30d4184d5a70c943f383, type: 3}
+  gameMusic: {fileID: 8300000, guid: 8a72045f75052fe47b1614f23870627e, type: 3}
+  endScreenMusic: {fileID: 8300000, guid: 4a07935a42fb30d4184d5a70c943f383, type: 3}
   buttonPlayAgain: {fileID: 824515747}
   buttonExit: {fileID: 824515746}
-  audioSource: {fileID: 693087294}
   winner_text: {fileID: 824515748}
+  planter: {fileID: 1025309892}
 --- !u!1001 &824515744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1244,6 +1250,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1016695884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9159072161371874507, guid: 759f50a275fba7842b5810710b0113be,
+    type: 3}
+  m_PrefabInstance: {fileID: 824515744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1025309892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,6 +1530,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1599542087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9159072162445806980, guid: 759f50a275fba7842b5810710b0113be,
+    type: 3}
+  m_PrefabInstance: {fileID: 824515744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1678316315
 GameObject:
   m_ObjectHideFlags: 0
