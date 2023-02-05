@@ -86,10 +86,10 @@ public class PlayerController2D : MonoBehaviour
 
     public static Dictionary<int, Color> indexToColorName = new()
     {
-        { 0, new Color(255,105,180) },
+        { 0, new Color32(255,105,180, 255) },
         { 1, Color.yellow },
         { 2, Color.blue },
-        { 3, new Color(147,112,219) }
+        { 3, new Color32(147,112,219, 255) }
     };
 
     void Start()
