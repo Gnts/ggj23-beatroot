@@ -14,7 +14,7 @@ public class IPlantVeggies : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2f);
-            if(Vegetable.count > 5) continue;
+            if(Vegetable.count > 7) continue;
             var index = Random.Range(0, Plants.Length);
             var potIndex = Random.Range(0, PlantPots.Length);
             if (occupied.Any(occ => occ == potIndex)) continue;
