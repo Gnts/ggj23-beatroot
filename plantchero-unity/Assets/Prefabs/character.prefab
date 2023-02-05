@@ -1306,6 +1306,13 @@ MonoBehaviour:
   maxStunTime: 2
   playerIndex: 0
   deathCounter: 0
+  score_card: {fileID: 0}
+  potatoSFX: {fileID: 5374602100174838983, guid: ccc8a19bf9b18469e8c60c747b606ff7,
+    type: 3}
+  beetrotoSFX: {fileID: 7297539540068407826, guid: 73bb41f6dcd7b43058b357c4c5b1488e,
+    type: 3}
+  carotoSFX: {fileID: 5651805726104508573, guid: 51c9c48af0a6d4489a90003c4c2b538a,
+    type: 3}
 --- !u!114 &1701375600628769053
 MonoBehaviour:
   m_ObjectHideFlags: 0

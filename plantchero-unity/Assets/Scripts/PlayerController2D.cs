@@ -62,6 +62,10 @@ public class PlayerController2D : MonoBehaviour
         { 3, "purple" }
     };
 
+    public GameObject potatoSFX;
+    public GameObject beetrotoSFX;
+    public GameObject carotoSFX;
+
     private void OnEnable()
     {
         Game.singleton.players.Add(this);
@@ -193,16 +197,20 @@ public class PlayerController2D : MonoBehaviour
                 fab = potatoFab;
                 power = 800F;
                 direction_vector = (direction.normalized + Vector2.up) * 200;
+                Instantiate(potatoSFX, transform.position, Quaternion.identity);
                 break;
             case ThrowableVeggie.CARROT:
                 fab = carrotFab;
                 power = 250f;
                 direction_vector = (direction.normalized) * 350;
-                break;
+                Instantiate(carotoSFX, transform.position, Quaternion.identity);
+                break;  
+
             case ThrowableVeggie.BEETROOT:
                 power = 400f;
                 fab = beetrootFab;
                 direction_vector = Vector2.up * 450;
+                Instantiate(beetrotoSFX, transform.position, Quaternion.identity);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
