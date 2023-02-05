@@ -52,11 +52,14 @@ public class Game : MonoBehaviour
         switch(state) 
         {
             case GameState.LOBBY:
-                
+                if (Input.GetKey(KeyCode.Return))
+                {
+                    ChangeState(GameState.COUNTDOWN);
+                }
 
                 break;
             case GameState.COUNTDOWN:
-
+                //Canvas obj takes care of state change
                 break;
             case GameState.PLAYING:
                 UpdatePlaying();
@@ -90,7 +93,7 @@ public class Game : MonoBehaviour
         }
     }
 
-void ChangeState(GameState newState)
+public void ChangeState(GameState newState)
     {
         switch(newState) 
         {

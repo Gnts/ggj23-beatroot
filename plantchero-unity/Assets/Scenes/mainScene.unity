@@ -1116,6 +1116,36 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5810813603996370254, guid: 759f50a275fba7842b5810710b0113be,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810813603996370254, guid: 759f50a275fba7842b5810710b0113be,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810813603996370254, guid: 759f50a275fba7842b5810710b0113be,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810813603996370254, guid: 759f50a275fba7842b5810710b0113be,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810813603996370254, guid: 759f50a275fba7842b5810710b0113be,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810813603996370254, guid: 759f50a275fba7842b5810710b0113be,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9159072161371874507, guid: 759f50a275fba7842b5810710b0113be,
         type: 3}
       propertyPath: m_IsActive
@@ -1124,7 +1154,7 @@ PrefabInstance:
     - target: {fileID: 9159072162445806980, guid: 759f50a275fba7842b5810710b0113be,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9159072162713876187, guid: 759f50a275fba7842b5810710b0113be,
         type: 3}
@@ -1235,6 +1265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159072162912725121, guid: 759f50a275fba7842b5810710b0113be,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 16777215
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 759f50a275fba7842b5810710b0113be, type: 3}
@@ -1800,6 +1835,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 824515744}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1599542090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599542087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe25ab869d3b36419b6e8553a28490d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1678316315
 GameObject:
   m_ObjectHideFlags: 0
