@@ -4822,7 +4822,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0eae412311d9459489e6141a4e188044, type: 2}
+  - {fileID: 2100000, guid: df9a81cd85acf054d955d51b19fe5734, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14590,7 +14590,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0eae412311d9459489e6141a4e188044, type: 2}
+  - {fileID: 2100000, guid: df9a81cd85acf054d955d51b19fe5734, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14652,7 +14652,7 @@ GameObject:
   - component: {fileID: 8082796264097162252}
   - component: {fileID: -4595813056294712379}
   m_Layer: 0
-  m_Name: VFX_PlayerXplosion
+  m_Name: VFX_PlayerXplosion_Purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29250,7 +29250,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0eae412311d9459489e6141a4e188044, type: 2}
+  - {fileID: 2100000, guid: df9a81cd85acf054d955d51b19fe5734, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
