@@ -50,14 +50,21 @@ public class PlayerController2D : MonoBehaviour
     public bool infiniteAmmo;
     public float stunTime;
     public float maxStunTime = 2f;
+    public int playerIndex;
     public int deathCounter;
-
-    private Dictionary<int, string> indexToColor = new()
+    public static Dictionary<int, string> indexToColor = new()
     {
         { 0, "pink" },
         { 1, "yellow" },
         { 2, "blue" },
         { 3, "purple" }
+    };
+    public static Dictionary<int, Color> indexToColorName = new()
+    {
+        { 0, new Color(255,105,180) },
+        { 1, Color.yellow },
+        { 2, Color.blue },
+        { 3, new Color(147,112,219) }
     };
     // Use this for initialization
     void Start()
@@ -74,6 +81,7 @@ public class PlayerController2D : MonoBehaviour
         initFacing = transform.rotation;
 
         var input = GetComponent<PlayerInput>();
+        playerIndex = input.playerIndex;
         string color = indexToColor[input.playerIndex];
         transform.name = $"player-{color}";
         animator = transform.GetChild(input.playerIndex).GetChild(0).GetComponent<Animator>();

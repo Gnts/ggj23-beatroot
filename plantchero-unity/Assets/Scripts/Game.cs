@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,7 @@ public enum GameState {
     LOBBY,
     COUNTDOWN,
     PLAYING,
-    EndScreen
+    ENDSCREEN
 }
 
 public class Game : MonoBehaviour
@@ -31,8 +32,8 @@ public class Game : MonoBehaviour
 
     public Button buttonPlayAgain, buttonExit;
 
-
-
+    private bool gameEnded;
+    public TextMeshProUGUI winner_text;
     public GameObject planter;
     
     void Start()
@@ -59,7 +60,7 @@ public class Game : MonoBehaviour
             case GameState.PLAYING:
 
                 break;
-            case GameState.EndScreen:
+            case GameState.ENDSCREEN:
 
                 break;
         }
@@ -71,10 +72,12 @@ public class Game : MonoBehaviour
         time = Math.Clamp(time, 0, MaxTime);
         
         ui_timer.text = ((int) time).ToString(CultureInfo.InvariantCulture);
-        if(((int) time) == 0)
+        if (((int)time) == 0 && !gameEnded)
         {
-            canvasTimer.SetActive(false);
-            canvasWinScreen.SetActive(true);
+			gameEnded = true;
+            StartEndScreen();
+			canvasTimer.SetActive(false);
+            canvasWinScreen.SetActive(true);        
         }
 
         //update audio pitch
@@ -85,7 +88,7 @@ public class Game : MonoBehaviour
         }
     }
 
-    void ChangeState(GameState newState)
+void ChangeState(GameState newState)
     {
         switch(newState) 
         {
@@ -104,8 +107,8 @@ public class Game : MonoBehaviour
                 StartPlaying();
 
                 break;
-            case GameState.EndScreen:
-                state = GameState.EndScreen;
+            case GameState.ENDSCREEN:
+                state = GameState.ENDSCREEN;
                 StartEndScreen();
 
             break;
@@ -116,32 +119,41 @@ public class Game : MonoBehaviour
     {
         ChangeUI(GameState.LOBBY);
         planter.SetActive(false);
-        audioSource.clip = lobbyMusic;
-        audioSource.pitch = 1;
-        audioSource.Play();
+        PlayAudio(lobbyMusic);
     }
 
     void StartCountdown()
     {
         ChangeUI(GameState.COUNTDOWN);
         planter.SetActive(false);
-        audioSource.clip = null;
+        PlayAudio(null);
     }
 
     void StartPlaying()
     {
         ChangeUI(GameState.PLAYING);
         planter.SetActive(true);
-        audioSource.clip = gameMusic;
-        audioSource.pitch = 1;
+        PlayAudio(gameMusic);
     }
 
     void StartEndScreen()
     {
-        ChangeUI(GameState.EndScreen);
+        ChangeUI(GameState.ENDSCREEN);
         planter.SetActive(false);
-        audioSource.clip = endScreenMusic;
-        audioSource.pitch = 1;
+        PlayAudio(endScreenMusic);
+
+        var players = FindObjectsOfType<PlayerController2D>();
+        int winnerIndex = 0;
+        int winnerDeathCount = 999;
+        foreach (var player in players)
+        {
+            if (player.deathCounter >= winnerDeathCount) continue;
+            winnerIndex = player.playerIndex;
+            winnerDeathCount = player.deathCounter;
+        }
+
+        winner_text.text += $"\n{PlayerController2D.indexToColor[winnerIndex]}";
+        winner_text.color = Color.magenta;
     }
 
     void ChangeUI(GameState newState)
@@ -162,13 +174,19 @@ public class Game : MonoBehaviour
             case GameState.PLAYING:
                 canvasTimer.SetActive(true);
                 break;
-            case GameState.EndScreen:
+            case GameState.ENDSCREEN:
                 canvasWinScreen.SetActive(true);
             break;
         }
     }
 
-
+    void PlayAudio(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.pitch = 1;
+        audioSource.Play();
+    }
+    
     void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
