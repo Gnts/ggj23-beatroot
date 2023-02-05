@@ -14,6 +14,9 @@ public class DestroyLine : MonoBehaviour
             controller.deathCounter++;
             go.transform.position = new Vector3(0, 6, 0);
             controller.activeVeggie = ThrowableVeggie.NONE;
+            controller.beetrootIcon.gameObject.SetActive(false);
+            controller.carrotIcon.gameObject.SetActive(false);
+            controller.potatoIcon.gameObject.SetActive(false);
         }
     }
 }

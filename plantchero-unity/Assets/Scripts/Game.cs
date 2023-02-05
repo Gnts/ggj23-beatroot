@@ -35,6 +35,7 @@ public class Game : MonoBehaviour
     private bool gameEnded;
     public TextMeshProUGUI winner_text;
     public GameObject planter;
+
     
     void Start()
     {
@@ -51,13 +52,14 @@ public class Game : MonoBehaviour
         switch(state) 
         {
             case GameState.LOBBY:
-                UpdatePlaying();
+                
 
                 break;
             case GameState.COUNTDOWN:
 
                 break;
             case GameState.PLAYING:
+                UpdatePlaying();
 
                 break;
             case GameState.ENDSCREEN:
@@ -120,6 +122,8 @@ void ChangeState(GameState newState)
         ChangeUI(GameState.LOBBY);
         planter.SetActive(false);
         PlayAudio(lobbyMusic);
+
+
     }
 
     void StartCountdown()
@@ -141,6 +145,7 @@ void ChangeState(GameState newState)
         ChangeUI(GameState.ENDSCREEN);
         planter.SetActive(false);
         PlayAudio(endScreenMusic);
+
 
         var players = FindObjectsOfType<PlayerController2D>();
         int winnerIndex = 0;

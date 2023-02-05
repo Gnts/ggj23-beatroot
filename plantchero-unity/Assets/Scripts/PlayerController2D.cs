@@ -42,6 +42,7 @@ public class PlayerController2D : MonoBehaviour
     public Transform carrotIcon;
     public Transform potatoIcon;
     public Transform beetrootIcon;
+    private Game gameController;
 
 	public int digForce = 1;
     public GameObject vegObject;
@@ -52,6 +53,8 @@ public class PlayerController2D : MonoBehaviour
     public float maxStunTime = 2f;
     public int playerIndex;
     public int deathCounter;
+
+    private bool movementAllowed = true;
     public static Dictionary<int, string> indexToColor = new()
     {
         { 0, "pink" },
@@ -86,6 +89,8 @@ public class PlayerController2D : MonoBehaviour
         transform.name = $"player-{color}";
         animator = transform.GetChild(input.playerIndex).GetChild(0).GetComponent<Animator>();
         RegisterCinemachine();
+
+        gameController = FindObjectOfType<Game>();
     }
 
     private void RegisterCinemachine()
@@ -173,13 +178,13 @@ public class PlayerController2D : MonoBehaviour
                 break;
             case ThrowableVeggie.CARROT:
                 fab = carrotFab;
-                power = 200f;
+                power = 250f;
                 direction_vector = (direction.normalized) * 350;
                 break;
             case ThrowableVeggie.BEETROOT:
-                power = 800F;
+                power = 400f;
                 fab = beetrootFab;
-                direction_vector = Vector2.up * 350;
+                direction_vector = Vector2.up * 450;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -254,7 +259,7 @@ public class PlayerController2D : MonoBehaviour
         }
 
         // Apply movement velocity
-        if(stunTime < 0) r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+        if((stunTime < 0) && movementAllowed) r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
 
         //Animator updates
         if (Mathf.Abs(r2d.velocity.x) > 0.001f ) animator.SetBool ("isRunning", true);
@@ -293,5 +298,10 @@ public class PlayerController2D : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         triggeringCollider = null;
+    }
+
+    public void SetMovementAllowed(bool allowed)
+    {
+        movementAllowed = allowed;
     }
 }
