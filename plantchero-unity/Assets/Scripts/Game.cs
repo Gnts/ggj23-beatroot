@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
 {
     public static Game singleton;
     public GameState state;
-    public const int MaxTime = 60;
+    public const int MaxTime = 100;
     public float time;
     public TextMeshProUGUI ui_timer;
     public GameObject canvasTitle;
