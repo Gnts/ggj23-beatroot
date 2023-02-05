@@ -98,23 +98,23 @@ public class Game : MonoBehaviour
 
     void UpdatePlaying()
     {
+
+        
         time -= Time.deltaTime;
         time = Math.Clamp(time, 0, MaxTime);
-        
-        ui_timer.text = ((int) time).ToString(CultureInfo.InvariantCulture);
-        if (((int)time) == 0 && !gameEnded)
-        {
-			gameEnded = true;
-            StartEndScreen();
-			canvasTimer.SetActive(false);
-            canvasWinScreen.SetActive(true);        
-        }
 
         //update audio pitch
         if (audioSource)
         {
             if ((int) time < 10) audioSource.pitch = 1.5f;
             else if ((int) time < 20) audioSource.pitch = 1.2f;
+        }
+        
+        ui_timer.text = ((int) time).ToString(CultureInfo.InvariantCulture);
+        if (((int)time) == 0 && !gameEnded)
+        {
+			gameEnded = true;
+            ChangeState(GameState.ENDSCREEN);    
         }
     }
 
@@ -173,6 +173,8 @@ public void ChangeState(GameState newState)
         ChangeUI(GameState.ENDSCREEN);
         planter.SetActive(false);
         PlayAudio(endScreenMusic);
+        audioSource.time = 7;
+        audioSource.pitch = 1.3f;
 
         int winnerIndex = 0;
         int winnerDeathCount = 999;
