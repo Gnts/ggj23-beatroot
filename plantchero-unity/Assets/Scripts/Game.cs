@@ -53,12 +53,17 @@ public class Game : MonoBehaviour
         ChangeState(GameState.LOBBY);
     }
 
+    bool isGamePadStartDown()
+    {
+        if (Gamepad.current == null) return false;
+        return Gamepad.current.startButton.IsPressed();
+    }
     void Update()
     {
         switch(state) 
         {
             case GameState.LOBBY:
-                if (Input.GetKey(KeyCode.Return) || Gamepad.current.startButton.IsPressed())
+                if (Input.GetKey(KeyCode.Return) || isGamePadStartDown())
                 {
                     ChangeState(GameState.COUNTDOWN);
                 }
