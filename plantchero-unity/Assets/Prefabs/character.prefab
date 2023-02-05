@@ -1289,6 +1289,11 @@ MonoBehaviour:
   isGrounded: 0
   animator: {fileID: 1081252170210929886}
   throwTransform: {fileID: 3329920246195238000}
+  explosionFabs:
+  - {fileID: 3823543717937924172, guid: 4bf4eef451a696c429bc9951c35d8b50, type: 3}
+  - {fileID: 3823543717937924172, guid: e791218d10d741b4f82fd9672473072a, type: 3}
+  - {fileID: 3823543717937924172, guid: 1062946df1eda84429e4ae143978f762, type: 3}
+  - {fileID: 3823543717937924172, guid: 8fd1ea99d04c49d48bacbe568ae5383c, type: 3}
   carrotFab: {fileID: 2986768306357618069, guid: 64ed5bde7d8aea74c8ebf8b10f3d3a68,
     type: 3}
   potatoFab: {fileID: 2986768306357618069, guid: 5a854243a5f2043b08d170df0b2ba8d3,

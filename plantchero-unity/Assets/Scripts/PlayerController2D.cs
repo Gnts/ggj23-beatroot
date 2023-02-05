@@ -36,6 +36,7 @@ public class PlayerController2D : MonoBehaviour
     private Vector2 move_vector;
     private bool jump;
     public Transform throwTransform;
+    public GameObject[] explosionFabs;
     public GameObject carrotFab;
     public GameObject potatoFab;
     public GameObject beetrootFab;
@@ -315,6 +316,20 @@ public class PlayerController2D : MonoBehaviour
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(colliderRadius, 0, 0), isGrounded ? Color.green : Color.red);
 
+    }
+
+    public void OnDie()
+    {
+        deathCounter++;
+        GameObject explosion = explosionFabs[playerIndex];
+        Instantiate(explosion, transform.position, transform.rotation);
+        
+        transform.position = new Vector3(0, 6, 0);
+        activeVeggie = ThrowableVeggie.NONE;
+        beetrootIcon.gameObject.SetActive(false);
+        carrotIcon.gameObject.SetActive(false);
+        potatoIcon.gameObject.SetActive(false);
+        Game.singleton.UpdateScores();
     }
 
     private void OnTriggerStay2D(Collider2D other)

@@ -14651,6 +14651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8082796264097162252}
   - component: {fileID: -4595813056294712379}
+  - component: {fileID: 1763936583942211026}
   m_Layer: 0
   m_Name: VFX_PlayerXplosion_Blue
   m_TagString: Untagged
@@ -14691,6 +14692,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secsToDestroy: 1
+--- !u!114 &1763936583942211026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823543717937924172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7069fce16c1564ca7aab5a497a8390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4586336171764021870
 GameObject:
   m_ObjectHideFlags: 0
