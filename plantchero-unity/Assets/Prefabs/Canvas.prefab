@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press START to begin!
+  m_text: Press ENTER to begin!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 33417c9c96fc9f546a831a9dd3eaef3b, type: 2}
   m_sharedMaterial: {fileID: -1645867041609685625, guid: 33417c9c96fc9f546a831a9dd3eaef3b,
@@ -1735,7 +1735,7 @@ RectTransform:
   m_GameObject: {fileID: 9159072161788798604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.2273, y: 3.2273, z: 3.2273}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9159072162445806981}
@@ -2490,7 +2490,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 520093695
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
