@@ -463,12 +463,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!4 &416257753 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 416257753, guid: 4d8c763520cd220438f2fe0608088a6b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1672451320}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &457149972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 457149972, guid: 4d8c763520cd220438f2fe0608088a6b,
@@ -1051,11 +1045,11 @@ MonoBehaviour:
   - {fileID: 1678316316}
   - {fileID: 1978539695}
   - {fileID: 985466889}
-  - {fileID: 416257753}
+  - {fileID: 985466889}
   - {fileID: 531918688}
   - {fileID: 457149972}
   - {fileID: 1474133317}
-  - {fileID: 1441084289}
+  - {fileID: 1474133317}
   - {fileID: 2141367914}
   - {fileID: 1585876053}
   Plants:
@@ -1171,12 +1165,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1444009015276455667, guid: 759f50a275fba7842b5810710b0113be,
     type: 3}
   m_PrefabInstance: {fileID: 824515744}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1441084289 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1441084289, guid: 4d8c763520cd220438f2fe0608088a6b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1672451320}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1474133317 stripped
 Transform:
