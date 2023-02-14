@@ -8,7 +8,7 @@ public class Vegetable : MonoBehaviour
     public static int count = 0;
     public int currentHealth;
     public ThrowableVeggie type;
-    int maxHelath = 3;
+    public int maxHelath = 3;
     public int potIndex;
 
     public float healthInterval = 2.0f; 
@@ -35,6 +35,7 @@ public class Vegetable : MonoBehaviour
 
     private void Update() 
     {
+        /*
         if (Time.time >= nextTime) 
         {
             if (currentHealth < maxHelath)
@@ -43,10 +44,11 @@ public class Vegetable : MonoBehaviour
             }
             nextTime += healthInterval; 
         }  
-
+        */
         if (Time.time >= scaleResetTime) 
         {
             transform.localScale = new Vector3(1,1,1);
+            currentHealth = maxHelath;
         }
     }
 

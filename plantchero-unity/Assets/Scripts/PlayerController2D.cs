@@ -142,6 +142,7 @@ public class PlayerController2D : MonoBehaviour
             if (moveDirection > 0 && !facingRight)
             {
                 facingRight = true;
+                transform.rotation = initFacing;
                 var localScale = t.localScale;
                 localScale = new Vector3(Mathf.Abs(localScale.x), localScale.y, transform.localScale.z);
                 t.localScale = localScale;
@@ -151,6 +152,7 @@ public class PlayerController2D : MonoBehaviour
             if (moveDirection < 0 && facingRight)
             {
                 facingRight = false;
+                transform.rotation = initFacing;
                 var localScale = t.localScale;
                 localScale = new Vector3(-Mathf.Abs(localScale.x), localScale.y, localScale.z);
                 t.localScale = localScale;
