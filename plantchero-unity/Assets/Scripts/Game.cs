@@ -79,6 +79,7 @@ public class Game : MonoBehaviour
                 if (Input.GetKey(KeyCode.Return) || (Gamepad.current == null ? false : Gamepad.current.startButton.IsPressed()))
                 {
                     ChangeState(GameState.LOBBY);
+                    RestartLevel();
                 }
                 break;
         }
@@ -158,7 +159,6 @@ public void ChangeState(GameState newState)
         ChangeUI(GameState.LOBBY);
         planter.SetActive(false);
         PlayAudio(lobbyMusic);
-
 
     }
 
